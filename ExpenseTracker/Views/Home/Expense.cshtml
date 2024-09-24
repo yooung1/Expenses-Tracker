@@ -9,15 +9,15 @@
     <form method="post">
         <div class="form-group">
             <label class="fw-bold">Item/Produto</label>
-            <input type="text" class="form-control border-3" asp-for="Item" placeholder="Digite aqui seu item/produto">
+            <input type="text" class="form-control border-3" asp-for="Item" placeholder="Digite aqui seu item/produto" required>
         </div>
         <div class="form-group">
             <label class="fw-bold">Valor</label>
-            <input type="number" class="form-control border-3" asp-for="Value" placeholder="Digite o valor">
+            <input type="number" class="form-control border-3" asp-for="Value" placeholder="Digite o valor" required>
         </div>
         <div class="form-group">
             <label class="fw-bold">Tipo de pagamento</label>
-            <select class="form-control border-3" asp-for="PaymentMethod">
+            <select class="form-control border-3" asp-for="PaymentMethod" required>
                 <option>PIX</option>
                 <option>Crédito</option>
                 <option>Debito</option>

@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Young1\source\repos\ExpenseTracker\ExpenseTracker
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Young1/source/repos/ExpenseTracker/ExpenseTracker/Views/Home/EditExpense.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0RXhwZW5zZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Young1/source/repos/ExpenseTracker/ExpenseTracker/Views/Home/Expense.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFeHBlbnNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

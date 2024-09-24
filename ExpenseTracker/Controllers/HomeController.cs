@@ -37,7 +37,7 @@ namespace ExpenseTracker.Controllers
 
         public IActionResult SeeExpenses()
         {
-            List<Expense> expenses = SeeExpensesDB.seeExpensesDB();
+            List<Expense> expenses = SeeExpensesDB.seeExpensesDB(); // instancia pra pegar os valores e somar
             double totalExpenses = expenses.Sum(exp => exp.Value); // Calcular o total das despesas
             ViewBag.TotalExpenses = totalExpenses; // Passar o total para a View
             return View(SeeExpensesDB.seeExpensesDB());
@@ -51,6 +51,30 @@ namespace ExpenseTracker.Controllers
 
             // Redireciona de volta para a lista de despesas
             return RedirectToAction("SeeExpenses");
+        }
+
+        public IActionResult EditExpense(int id)
+        {
+            // Recupera a despesa do banco de dados pelo ID
+            Expense expense = SeeExpensesDB.seeSpecificExpenseDB(id);
+            if (expense == null)
+            {
+                return NotFound(); // Retorna 404 se a despesa não for encontrada
+            }
+            return View(expense); // Passa a despesa para a view
+        }
+
+
+        [HttpPost]
+        public IActionResult EditExpense(Expense expense)
+        {
+            if (ModelState.IsValid)
+            {
+                // Atualiza a despesa no banco de dados
+                UpdateExpensesDB.UpdateExpenseDB(expense); // Você deve implementar esse método
+                return RedirectToAction("SeeExpenses"); // Redireciona para a lista de despesas
+            }
+            return View(expense); // Retorna a view com a despesa se o modelo não for válido
         }
 
         public IActionResult Privacy()

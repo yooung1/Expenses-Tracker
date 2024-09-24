@@ -1,0 +1,24 @@
+﻿<h2 class="text-center">Editar Despesa</h2>
+
+<div class="container">
+    <form method="post">
+        <div class="form-group">
+            <label for="Item">Item</label>
+            <input type="text" class="form-control" id="Item" name="Item" value="@Model.Item" required>
+        </div>
+        <div class="form-group">
+            <label for="Value">Valor</label>
+            <input type="number" step="0.01" class="form-control" id="Value" name="@Model.Value" value="@Model.Value" required>
+        </div>
+        <div class="form-group">
+            <label for="PaymentMethod">Método de Pagamento</label>
+            <input type="text" class="form-control" id="PaymentMethod" name="PaymentMethod" value="@Model.PaymentMethod" required>
+        </div>
+        <div class="form-group">
+            <label for="Description">Descrição</label>
+            <textarea class="form-control" id="Description" name="Description" required>@Model.Description</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a class="btn btn-secondary" asp-action="SeeExpenses">Cancelar</a>
+    </form>
+</div>

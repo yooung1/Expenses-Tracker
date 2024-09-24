@@ -34,21 +34,23 @@ namespace ExpenseTracker.Models
             return ListOfExpenses;
         }
 
-        public static List<Expense> seeSpecificExpenseDB(int Id)
+        public static Expense seeSpecificExpenseDB(int Id)
         {
-            List<Expense> ListOfExpenses = new List<Expense>();
+            Expense expense = null; // Inicializa como null
             string connectionString = "Data Source=C:\\Users\\Young1\\source\\repos\\ExpenseTracker\\ExpenseTracker\\DataBase\\DataBase.db;";
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
-                string sql = "SELECT * FROM Expenses where Id =" + Id.ToString();
+                string sql = "SELECT * FROM Expenses WHERE Id = @Id"; // Usando parâmetros para evitar SQL Injection
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
                 {
+                    cmd.Parameters.AddWithValue("@Id", Id); // Adiciona o parâmetro
+
                     using (SQLiteDataReader reader = cmd.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.Read()) // Se encontrar um registro
                         {
-                            Expense expense = new Expense()
+                            expense = new Expense()
                             {
                                 Id = Convert.ToInt32(reader["Id"]),
                                 Item = reader["Item"].ToString(),
@@ -56,12 +58,12 @@ namespace ExpenseTracker.Models
                                 PaymentMethod = reader["PaymentMethod"].ToString(),
                                 Description = reader["Description"].ToString()
                             };
-                            ListOfExpenses.Add(expense);
                         }
                     }
                 }
             }
-            return ListOfExpenses;
+            return expense; // Retorna a despesa ou null se não encontrada
         }
+
     }
 }

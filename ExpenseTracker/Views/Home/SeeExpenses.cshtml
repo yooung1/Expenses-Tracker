@@ -27,7 +27,7 @@
                     <td>R$ @expense.Value</td>
                     <td>@expense.PaymentMethod</td>
                     <td>@expense.Description</td>
-                    <td><a class="btn btn-info" asp-action="seeSpecificExpense">Editar</a></td>
+                    <td><a class="btn btn-info" asp-action="EditExpense" asp-route-id="@expense.Id">Editar</a></td>
                     <td>
                         <form method="post" asp-action="DeleteExpense" asp-route-id="@expense.Id" onsubmit="return confirm('Tem certeza que deseja apagar esta despesa?');">
                             <button type="submit" class="btn btn-danger">Apagar</button>
