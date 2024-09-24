@@ -1,0 +1,41 @@
+﻿<h2 class="text-center">Lista de Despesas</h2>
+
+<div class="container">
+    <div class="card mb-4">
+        <div class="card-header text-center">
+            Total de Despesas
+        </div>
+        <div class="card-body text-center">
+            R$ @ViewBag.TotalExpenses
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Valor</th>
+                <th>Método de Pagamento</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var expense in Model)
+            {
+                <tr>
+                    <td>@expense.Item</td>
+                    <td>R$ @expense.Value</td>
+                    <td>@expense.PaymentMethod</td>
+                    <td>@expense.Description</td>
+                    <td><a class="btn btn-info" asp-action="seeSpecificExpense">Editar</a></td>
+                    <td>
+                        <form method="post" asp-action="DeleteExpense" asp-route-id="@expense.Id" onsubmit="return confirm('Tem certeza que deseja apagar esta despesa?');">
+                            <button type="submit" class="btn btn-danger">Apagar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-dark" asp-action="Index">Voltar</a>
+</div>

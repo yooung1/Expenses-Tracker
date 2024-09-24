@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Your Expenses";
+}
+
+@model ExpenseTracker.Models.Expense;
+
+<div class="text-center">
+    <h1 class="display-4">Expense</h1>
+    <form method="post">
+        <div class="form-group">
+            <label class="fw-bold">Item/Produto</label>
+            <input type="text" class="form-control border-3" asp-for="Item" placeholder="Digite aqui seu item/produto">
+        </div>
+        <div class="form-group">
+            <label class="fw-bold">Valor</label>
+            <input type="number" class="form-control border-3" asp-for="Value" placeholder="Digite o valor">
+        </div>
+        <div class="form-group">
+            <label class="fw-bold">Tipo de pagamento</label>
+            <select class="form-control border-3" asp-for="PaymentMethod">
+                <option>PIX</option>
+                <option>Crédito</option>
+                <option>Debito</option>
+                <option>Dinheiro</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="fw-bold">Descrição</label>
+            <textarea class="form-control border-3" asp-for="Description" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Salvar</button>
+        <button class="btn btn btn-dark mt-2" asp-action="Index">Voltar</button>
+    </form>
+</div>
